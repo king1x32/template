@@ -19,6 +19,14 @@ require("lazy").setup({
   ui = { backdrop = 100 },
   performance = {
     rtp = {
+      paths = {
+        supported_configs = function(opts)
+          -- add path to rtp
+          table.insert(opts.performance.rtp.paths, "/data/data/com.termux/files/usr/bin/")
+          table.insert(opts.performance.rtp.paths, "/bin/")
+          return opts
+        end,
+      },
       -- disable some rtp plugins, add more to your liking
       disabled_plugins = {
         "gzip",

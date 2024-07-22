@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -32,6 +32,38 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
+        --backup = false, -- creates a backup file
+        encoding = "utf-8",
+        fileencoding = "utf-8",
+        linebreak = true,
+        list = true,
+        listchars = { tab = "> ", trail = "·", extends = ">", precedes = "<", nbsp = "-", eol = "↵" },
+        scrolloff = 2, -- Number of lines to keep above and below the cursor
+        shiftwidth = 2, -- Number of space inserted for indentation
+        showtabline = 2, -- always display tabline
+        sidescrolloff = 4, -- Number of columns to keep at the sides of the cursor
+        smartindent = true, -- make indenting smarter again
+        --swapfile = false, -- creates a swapfile
+        tabstop = 2, -- Number of space in a tab
+        smarttab = true,
+        --showcmd = false -- hide (partial) command in the last line of the screen (for performance)
+        -- clipboard = "unnamedplus",
+        title = true,
+        autoindent = true,
+        hlsearch = true,
+        backup = false,
+        showcmd = true,
+        cmdheight = 0,
+        -- laststatus = 0,
+        expandtab = true,
+        inccommand = "split",
+        ignorecase = true,
+        breakindent = true,
+        backspace = {"start", "eol", "indent"},
+        splitbelow = true,
+        splitright = true,
+        splitkeep = "cursor",
+        -- mouse = "",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -63,7 +95,63 @@ return {
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
+        ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+        -- quick save && quit
+        ["<leader>w"] = { ":w<cr> :so %<cr>", desc = "Save&&Reload" },
+        ["<leader>x"] = { "<cmd>wq<cr>", desc = "Save&&Quit" },
+        ["<C-s>"] = { ":w!<cr> :so %<cr>", desc = "Force Save&&Reload" },
+        ["<C-x>"] = { ":wq!<cr>", desc = "Force Save&&Quit" },
+        -- change description but the same command
+        ["<leader>r"] = { name = "󰑓 Edit && Reload File" },
+        ["<leader>rr"] = { ":so %<cr>", desc = "Reload File" },
+        ["<leader>re"] = { ":e ~/.config/nvim/lua/user/init.lua<cr>", desc = "Edit user/init.lua" },
 
+        ["<leader>m"] = { name = " Compiler" },
+
+        -- ["zl"] = { "20zl", desc = "20zl" },
+        -- ["zh"] = { "20zh", desc = "20zh" },
+
+        ["zl"] = { "zL", desc = "zL" },
+        ["zh"] = { "zH", desc = "zH" },
+
+        ["x"] = { '"_x', desc = '"_x' },
+
+        -- Increment/decrement
+        ["+"] = { "<C-a>", desc = "<C-a>" },
+        ["-"] = { "<C-x>", desc = "<C-x>" },
+
+        -- Select all
+        ["<C-a>"] = { "gg<S-v>G", desc = "gg<S-v>G" },
+
+        -- Tabs
+        ["te"] = { ":tabedit", desc = ":tabedit" },
+        ["<tab>"] = { ":tabnext<Return>", desc = ":tabnext<Return>" },
+        ["<s-tab>"] = { ":tabprev<Return>", desc = ":tabprev<Return>" },
+        ["tw"] = { ":tabclose<Return>", desc = ":tabclose<Return>" },
+
+        -- Split window
+        ["ss"] = { ":split<Return>", desc = ":split<Return>" },
+        ["sv"] = { ":vsplit<Return>", desc = ":vsplit<Return>" },
+
+        -- Move window
+        ["sh"] = { "<C-w>h", desc = "<C-w>h" },
+        ["sk"] = { "<C-w>k", desc = "<C-w>k" },
+        ["sj"] = { "<C-w>j", desc = "<C-w>j" },
+        ["sl"] = { "<C-w>l", desc = "<C-w>l" },
+
+        -- Resize window
+        ["<C-S-h>"] = { "<C-w><", desc = "<C-w><" },
+        ["<C-S-l>"] = { "<C-w>>", desc = "<C-w>>" },
+        ["<C-S-k>"] = { "<C-w>+", desc = "<C-w>+" },
+        ["<C-S-j>"] = { "<C-w>-", desc = "<C-w>-" },
+
+        -- Diagnostics
+        ["<C-j>"]  = {
+          function()
+            vim.diagnostic.goto_next()
+          end,
+          desc = "diagnostic.goto_next"
+        }
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
       },
