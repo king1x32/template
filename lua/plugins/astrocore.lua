@@ -114,6 +114,8 @@ return {
         ["zl"] = { "zL", desc = "zL" },
         ["zh"] = { "zH", desc = "zH" },
 
+        ["d"] = { '"_d', desc = "Delete without yank" },
+        ["p"] = { '"_dP', desc = "Paste without yank" },
         ["x"] = { '"_x', desc = '"_x' },
 
         -- Increment/decrement

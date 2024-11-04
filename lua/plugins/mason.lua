@@ -19,7 +19,6 @@ return {
         "yamlls",
         "gopls",
         "arduino_language_server",
-        "tsserver",
         "stylelint_lsp",
         "vimls",
         "cmake",

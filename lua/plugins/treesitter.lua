@@ -33,7 +33,6 @@ return {
       "gitcommit",
       "go",
       "kotlin",
-      "latex",
       "make",
       "markdown",
       "proto",
@@ -44,6 +43,7 @@ return {
       "php",
       "typescript",
       "query",
+      "xml"
       -- add more arguments for adding more treesitter parsers
     },
     sync_install = false,
