@@ -19,34 +19,34 @@ vim.scriptencoding = "utf-8"
 --   },
 -- }
 
-  if vim.fn.has("wsl") == 1 then
-    vim.g.clipboard = {
-      name = "win32yank-wsl",
-      copy = {
-        ["+"] = "win32yank.exe -i --crlf",
-        ["*"] = "win32yank.exe -i --crlf",
-      },
-      paste = {
-        ["+"] = "win32yank.exe -o --lf",
-        ["*"] = "win32yank.exe -o --lf",
-      },
-      cache_enabled = 1,
-    }
-  end
-  if vim.g.os == "Linux" then
-    vim.g.clipboard = {
-      name = 'termux-clipboard',
-      copy = {
-         ["+"] = "termux-clipboard-set",
-         ["*"] = "termux-clipboard-set",
-       },
-      paste = {
-         ["+"] = "termux-clipboard-get",
-         ["*"] = "termux-clipboard-get",
-      },
-      cache_enabled = 1,
-    }
-  end
+if vim.fn.has("wsl") == 1 then
+  vim.g.clipboard = {
+    name = "win32yank-wsl",
+    copy = {
+      ["+"] = "win32yank.exe -i --crlf",
+      ["*"] = "win32yank.exe -i --crlf",
+    },
+    paste = {
+      ["+"] = "win32yank.exe -o --lf",
+      ["*"] = "win32yank.exe -o --lf",
+    },
+    cache_enabled = 1,
+  }
+end
+if vim.g.os == "Linux" then
+  vim.g.clipboard = {
+    name = 'termux-clipboard',
+    copy = {
+      ["+"] = "termux-clipboard-set",
+      ["*"] = "termux-clipboard-set",
+    },
+    paste = {
+      ["+"] = "termux-clipboard-get",
+      ["*"] = "termux-clipboard-get",
+    },
+    cache_enabled = 1,
+  }
+end
 
 vim.cmd [[
   " for detecting OS
@@ -102,7 +102,7 @@ vim.cmd [[
   augroup END
 
   " Search && replace selected text
-  vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+  vnoremap <C-r> "hy:%s/<C-r>h/<C-r>h/gc<left><left><left>
 
   " options
   " choose between 'vertical' and 'horizontal' for how the terminal window is split
@@ -125,6 +125,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = [[%s/\n\+\%$//e]],
 })
 
-vim.opt.path:append({"**"})
-vim.opt.wildignore:append({"*/node_modules/*"})
-vim.opt.formatoptions:append({"r"})
+vim.opt.path:append({ "**" })
+vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.opt.formatoptions:append({ "r" })
