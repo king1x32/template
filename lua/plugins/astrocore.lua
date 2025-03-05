@@ -104,7 +104,7 @@ return {
         -- change description but the same command
         ["<leader>r"]  = { name = "󰑓 Edit && Reload File" },
         ["<leader>rr"] = { ":so %<cr>", desc = "Reload File" },
-        ["<leader>re"] = { ":e ~/.config/nvim/lua/user/init.lua<cr>", desc = "Edit user/init.lua" },
+        ["<leader>re"] = { ":e ~/.config/nvim/lua/<cr>", desc = "Edit user/init.lua" },
 
         ["<leader>m"]  = { name = " Compiler" },
 
