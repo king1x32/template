@@ -102,8 +102,8 @@ vim.cmd [[
   augroup END
 
   " Search && replace selected text
-  vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
-  vnoremap <C-A-r> "hy:%s/<C-r>h/<C-r>h/gc<left><left><left>
+  vnoremap <leader>re "hy:%s/\%#.*<C-r>h/<C-r>h/gc<left><left><left>
+  vnoremap <leader>rr "hy:%s/<C-r>h/<C-r>h/gc<left><left><left>
 
   " options
   " choose between 'vertical' and 'horizontal' for how the terminal window is split
@@ -115,6 +115,14 @@ vim.cmd [[
   let g:split_term_resize_cmd = 'resize 8'
   " (or let g:split_term_resize_cmd = 'vertical resize 40')
 ]]
+
+-- auto-reload files when modified externally
+-- https://unix.stackexchange.com/a/383044
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+	command = "if mode() != 'c' | checktime | endif",
+	pattern = { "*" },
+})
 
 -- Automatically deletes all trailing whitespace and newlines at end of file on save.
 vim.api.nvim_create_autocmd("BufWritePre", {

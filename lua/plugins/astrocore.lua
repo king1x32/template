@@ -97,14 +97,18 @@ return {
         -- ["<Leader>b"] = { desc = "Buffers" },
         ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
         -- quick save && quit
-        ["<leader>w"]  = { ":w<cr> :so %<cr>", desc = "Save&&Reload" },
+        ["<leader>w"]  = { ":w<cr>", desc = "Save&&Reload" },
+        ["<leader>j"]  = { ":w<cr>", desc = "Save&&Reload" },
         ["<leader>x"]  = { "<cmd>wq<cr>", desc = "Save&&Quit" },
-        ["<C-s>"]      = { ":w!<cr> :so %<cr>", desc = "Force Save&&Reload" },
+        ["<leader>k"]  = { "<cmd>wq<cr>", desc = "Save&&Quit" },
+        ["<C-s>"]      = { ":w!<cr>", desc = "Force Save&&Reload" },
         ["<C-x>"]      = { ":wq!<cr>", desc = "Force Save&&Quit" },
         -- change description but the same command
         ["<leader>r"]  = { name = "󰑓 Edit && Reload File" },
-        ["<leader>rr"] = { ":so %<cr>", desc = "Reload File" },
-        ["<leader>re"] = { ":e ~/.config/nvim/lua/<cr>", desc = "Edit user/init.lua" },
+        ["<leader>rr"]  = { name = "Replace text (no remove)" },
+        ["<leader>re"]  = { name = "Replace text" },
+        ["<leader>rf"] = { ":so %<cr>", desc = "Reload File" },
+        ["<leader>rl"] = { ":e ~/.config/nvim/lua/<cr>", desc = "Edit user/init.lua" },
 
         ["<leader>m"]  = { name = " Compiler" },
 
