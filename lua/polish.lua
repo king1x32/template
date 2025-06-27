@@ -103,7 +103,8 @@ vim.cmd [[
 
   " Search && replace selected text
   vnoremap <leader>re "hy:%s/\%#.*<C-r>h/<C-r>h/gc<left><left><left>
-  vnoremap <leader>rr "hy:%s/<C-r>h/<C-r>h/gc<left><left><left>
+  vnoremap <leader>rr "hy:%s/<C-r>h//gc<left><left><left>
+  vnoremap <leader>rf "hy:%s/<C-r>h/<C-r>h/gc<left><left><left>
 
   " options
   " choose between 'vertical' and 'horizontal' for how the terminal window is split

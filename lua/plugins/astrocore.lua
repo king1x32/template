@@ -118,9 +118,10 @@ return {
         ["<C-x>"]      = { ":wq!<cr>", desc = "Force Save&&Quit" },
         -- change description but the same command
         ["<leader>r"]  = { name = "󰑓 Edit && Reload File" },
-        ["<leader>rr"]  = { name = "Replace text (no remove)" },
-        ["<leader>re"]  = { name = "Replace text" },
-        ["<leader>rf"] = { ":so %<cr>", desc = "Reload File" },
+        ["<leader>rs"] = { ":%s/<<C-r><C-w>>/<C-r><C-w>/gI<Left><Left><Left>" },
+        ["<leader>rr"]  = { desc = "Replace text (no remove)" },
+        ["<leader>re"]  = { desc = "Replace text" },
+        ["<leader>rt"] = { ":so %<cr>", desc = "Reload File" },
         ["<leader>rl"] = { ":e ~/.config/nvim/lua/<cr>", desc = "Edit user/init.lua" },
 
         ["<leader>m"]  = { name = " Compiler" },
