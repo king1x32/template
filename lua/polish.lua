@@ -19,7 +19,7 @@ vim.scriptencoding = "utf-8"
 --   },
 -- }
 
-if vim.fn.has("wsl") == 1 then
+if vim.fn.has "wsl" == 1 then
   vim.g.clipboard = {
     name = "win32yank-wsl",
     copy = {
@@ -35,7 +35,7 @@ if vim.fn.has("wsl") == 1 then
 end
 if vim.g.os == "Linux" then
   vim.g.clipboard = {
-    name = 'termux-clipboard',
+    name = "termux-clipboard",
     copy = {
       ["+"] = "termux-clipboard-set",
       ["*"] = "termux-clipboard-set",
@@ -105,6 +105,11 @@ vim.cmd [[
   vnoremap <leader>re "hy:%s/\%#.*<C-r>h/<C-r>h/gc<left><left><left>
   vnoremap <leader>rr "hy:%s/<C-r>h//gc<left><left><left>
   vnoremap <leader>rf "hy:%s/<C-r>h/<C-r>h/gc<left><left><left>
+  " Search and replace word under cursor
+  nnoremap <leader>rt :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
+  " Change word under cursor
+  nnoremap c* *``cgn
+  nnoremap c# #``cgN
 
   " options
   " choose between 'vertical' and 'horizontal' for how the terminal window is split
@@ -121,8 +126,8 @@ vim.cmd [[
 -- https://unix.stackexchange.com/a/383044
 vim.o.autoread = true
 vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
-	command = "if mode() != 'c' | checktime | endif",
-	pattern = { "*" },
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
 })
 
 -- Automatically deletes all trailing whitespace and newlines at end of file on save.
@@ -135,6 +140,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = [[%s/\n\+\%$//e]],
 })
 
-vim.opt.path:append({ "**" })
-vim.opt.wildignore:append({ "*/node_modules/*" })
-vim.opt.formatoptions:append({ "r" })
+vim.opt.path:append { "**" }
+vim.opt.wildignore:append { "*/node_modules/*" }
+vim.opt.formatoptions:append { "r" }
